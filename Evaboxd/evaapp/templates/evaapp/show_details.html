@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+{% if show.episode_set.all %}
+<h1>{{show.show_title}}</h1>
+<ol>
+{% for episode in show.episode_set.all %}
+    <li>
+        {{ episode.ep_title }}
+    </li>
+    {% endfor %}
+</ol>
+{% else %}
+<h1>não tem episódio</h1>
+{% endif %}
+</body>
+
+</html>
