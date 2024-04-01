@@ -11,8 +11,7 @@ class IndexViews(generic.ListView):
     context_object_name = 'shows_list'
 
     def get_queryset(self):
-        """Return the last five published shows."""
-        return Show.objects.order_by("-show_date")[:5]
+        return Show.objects.order_by("-show_date")
 
 
 class DetailViews(generic.DetailView):

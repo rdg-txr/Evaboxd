@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 
 <head>
@@ -9,13 +11,24 @@
 <body>
 {% if show.episode_set.all %}
 <h1>{{show.show_title}}</h1>
-<ol>
-{% for episode in show.episode_set.all %}
+<ul>
+    {% for episode in show.episode_set.all %}
     <li>
-        {{ episode.ep_title }}
+        <div>
+            <!--<img src="{% static 'evaapp/images/{{show.show_title}}/{{episodio.ep_num}}.jpg' %}">-->
+            {% with image_url='evaapp/images/'|add:show.show_title|add:'/ep_.jpg' %}
+            <p>{{ image_url }}</p>
+            <img src="{% static image_url %}">
+            {% endwith %}
+
+
+            <!--<img src="{% with image_url='evaapp/images/'|add:show.show_title|add:'/ep_'|add:episode.ep_num|add:'.jpg' %}{% static image_url %}{% endwith %}">-->
+
+            <a href=""><p>Episódio {{episode.ep_num}} - {{ episode.ep_title }}</p></a>
+        </div>
     </li>
     {% endfor %}
-</ol>
+</ul>
 {% else %}
 <h1>não tem episódio</h1>
 {% endif %}

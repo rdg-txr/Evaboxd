@@ -18,3 +18,6 @@ class Episode(models.Model):
 
     def __str__(self):
         return self.ep_title
+
+    class Meta:
+        ordering = ["ep_num"]
