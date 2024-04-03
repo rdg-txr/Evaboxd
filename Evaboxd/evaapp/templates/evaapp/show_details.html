@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load convert_tags %}
 
 <html lang="en">
 
@@ -16,7 +17,8 @@
     <li>
         <div>
             <!--<img src="{% static 'evaapp/images/{{show.show_title}}/{{episodio.ep_num}}.jpg' %}">-->
-            {% with image_url='evaapp/images/'|add:show.show_title|add:'/ep_.jpg' %}
+            {% with image_url='evaapp/images/'|add:show.show_title|add:'/ep_'|add:episode.ep_num|to_string|add:'.jpg' %}
+            <p>{{ episode.ep_num|to_string }}</p>
             <p>{{ image_url }}</p>
             <img src="{% static image_url %}">
             {% endwith %}
