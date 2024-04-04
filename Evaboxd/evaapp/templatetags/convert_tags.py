@@ -5,4 +5,4 @@ register = template.Library()
 
 @register.filter()
 def to_string(value: int):
-    return str(value) + 'oi'
+    return str(value)
