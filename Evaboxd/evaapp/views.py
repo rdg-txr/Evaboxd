@@ -14,10 +14,15 @@ class IndexViews(generic.ListView):
         return Show.objects.order_by("-show_date")
 
 
-class DetailViews(generic.DetailView):
+class ShowDetailViews(generic.DetailView):
     model = Show
     template_name = 'evaapp/show_details.html'
     # context_object_name = 'episode_list'
     #
     # def get_queryset(self):
     #     return Episode
+
+
+class EpisodeDetailViews(generic.DetailView):
+    model = Episode
+    template_name = 'evaapp/episode_details.html'
