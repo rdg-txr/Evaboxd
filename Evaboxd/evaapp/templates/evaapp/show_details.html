@@ -10,7 +10,7 @@
 </head>
 
 <body>
-{% if show.episode_set.all %}
+{% if episode_list %}
 <h1>{{show.show_title}}</h1>
 <ul>
     {% for episode in show.episode_set.all %}

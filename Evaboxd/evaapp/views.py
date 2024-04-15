@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 
+
 from .models import Show, Episode
 
 
@@ -14,13 +15,14 @@ class IndexViews(generic.ListView):
         return Show.objects.order_by("-show_date")
 
 
-class ShowDetailViews(generic.DetailView):
-    model = Show
+class ShowDetailViews(generic.ListView):
+    # model = Show
     template_name = 'evaapp/show_details.html'
-    # context_object_name = 'episode_list'
-    #
-    # def get_queryset(self):
-    #     return Episode
+    context_object_name = 'episode_list'
+
+    def get_queryset(self):
+        episode_list = Show.episode_set.all()
+        return episode_list
 
 
 class EpisodeDetailViews(generic.DetailView):
